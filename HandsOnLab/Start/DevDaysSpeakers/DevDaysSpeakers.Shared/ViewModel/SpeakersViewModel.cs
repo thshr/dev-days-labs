@@ -9,6 +9,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using JetBrains.Annotations;
 
 namespace DevDaysSpeakers.ViewModel
@@ -25,7 +26,7 @@ namespace DevDaysSpeakers.ViewModel
                 if (Equals(value, _selSpeaker)) return;
                 _selSpeaker = value;
                 OnPropertyChanged();
-                MessagingCenter.Send(this, "", new );
+                MessagingCenter.Send(_selSpeaker, "Navigation");
             }
         }
 
@@ -33,7 +34,7 @@ namespace DevDaysSpeakers.ViewModel
 
         public SpeakersViewModel()
         {
-            GetSpeakersCommand = new Command(async () => await GetSpeaker(), () => !IsBusy);
+            GetSpeakersCommand = new Command(async () => await GetSpeakers(), () => !IsBusy);
             Speakers = new ObservableCollection<Speaker>();
         }
 
@@ -53,7 +54,7 @@ namespace DevDaysSpeakers.ViewModel
         }
 
 
-        private async Task GetSpeaker()
+        private async Task GetSpeakers()
         {
             if (IsBusy) return;
 

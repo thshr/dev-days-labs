@@ -22,8 +22,14 @@ namespace DevDaysSpeakers.View
             //Create the view model and set as binding context
             //vm = new SpeakersViewModel();
             //BindingContext = vm;
+            
+            MessagingCenter.Subscribe<Speaker>(this,"Navigation", OnMsgNavReceived);
         }
 
-       
+        private void OnMsgNavReceived(Speaker speaker)
+        {
+            var detailsPage = new DetailsPage (speaker);
+            Navigation.PushAsync(detailsPage);
+        }
     }
 }

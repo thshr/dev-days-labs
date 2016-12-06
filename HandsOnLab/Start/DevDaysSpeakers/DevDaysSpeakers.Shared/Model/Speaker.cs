@@ -15,6 +15,7 @@ namespace DevDaysSpeakers.Model
         public string Website { get; set; }
         public string Title { get; set; }
         public string Avatar { get; set; }
+        public string Image { get; set; }
 
         //Azure information for version
         [Microsoft.WindowsAzure.MobileServices.Version]

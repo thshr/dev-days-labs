@@ -5,7 +5,7 @@
              Title="Speakers">
   <StackLayout Spacing="0">
     <Button Text="Get Speakers" Command="{Binding GetSpeakersCommand}"></Button>
-    <Label Text="{Binding SelSpeaker.Name}"></Label>
+    <Label HorizontalTextAlignment="Center" FontAttributes="Bold" Text="{Binding SelSpeaker.Name}"></Label>
     <ActivityIndicator IsRunning="{Binding IsBusy}" IsEnabled="{Binding IsBusy}"></ActivityIndicator>
     <ListView x:Name="lvSpeakers" ItemsSource="{Binding Speakers}" SelectedItem="{Binding SelSpeaker}">
       <ListView.ItemTemplate>
