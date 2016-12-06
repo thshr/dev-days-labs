@@ -14,14 +14,14 @@ namespace DevDaysSpeakers.View
 {
     public partial class SpeakersPage : ContentPage
     {
-        SpeakersViewModel vm;
+        //SpeakersViewModel vm;
         public SpeakersPage()
         {
             InitializeComponent();
 
             //Create the view model and set as binding context
-            vm = new SpeakersViewModel();
-            BindingContext = vm;
+            //vm = new SpeakersViewModel();
+            //BindingContext = vm;
         }
 
        

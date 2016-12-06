@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using DevDaysSpeakers.ViewModel;
 using Xamarin.Forms;
 
 namespace DevDaysSpeakers
@@ -13,7 +13,7 @@ namespace DevDaysSpeakers
         public App()
         {
             // The root page of your application
-            var content = new SpeakersPage();
+            var content = new SpeakersPage { BindingContext = new SpeakersViewModel() };
 
             MainPage = new NavigationPage(content);
         }

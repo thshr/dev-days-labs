@@ -3,5 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevDaysSpeakers.View.SpeakersPage"
              Title="Speakers">
-
+  <StackLayout Spacing="0">
+    <Button Text="Get Speakers" Command="{Binding GetSpeakersCommand}"></Button>
+    <Label Text="{Binding SelSpeaker.Name}"></Label>
+    <ActivityIndicator IsRunning="{Binding IsBusy}" IsEnabled="{Binding IsBusy}"></ActivityIndicator>
+    <ListView x:Name="lvSpeakers" ItemsSource="{Binding Speakers}" SelectedItem="{Binding SelSpeaker}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ImageCell Text="{Binding Name}" Detail="{Binding Title}" ImageSource="{Binding Avatar}" />
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
 </ContentPage>
