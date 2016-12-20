@@ -11,12 +11,26 @@ using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using JetBrains.Annotations;
+using Plugin.TextToSpeech;
 
 namespace DevDaysSpeakers.ViewModel
 {
     public class SpeakersViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Speaker> Speakers { get; set; } // = new ObservableCollection<Speaker>();
+
+        public Command GetSpeakersCommand { get; }
+        
+
+        public SpeakersViewModel()
+        {
+            GetSpeakersCommand = new Command(async () => await GetSpeakers(), () => !IsBusy);
+            
+            Speakers = new ObservableCollection<Speaker>();
+        }
+
+        private bool _busy;
+        private Speaker _selSpeaker;
 
         public Speaker SelSpeaker
         {
@@ -29,17 +43,6 @@ namespace DevDaysSpeakers.ViewModel
                 MessagingCenter.Send(_selSpeaker, "Navigation");
             }
         }
-
-        public Command GetSpeakersCommand { get; set; }
-
-        public SpeakersViewModel()
-        {
-            GetSpeakersCommand = new Command(async () => await GetSpeakers(), () => !IsBusy);
-            Speakers = new ObservableCollection<Speaker>();
-        }
-
-        private bool _busy;
-        private Speaker _selSpeaker;
 
         public bool IsBusy
         {

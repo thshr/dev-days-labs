@@ -15,14 +15,14 @@ namespace DevDaysSpeakers.View
 {
     public partial class DetailsPage : ContentPage
     {
-        Speaker speaker;
+        Speaker _speaker;
         public DetailsPage(Speaker speaker)
         {
             InitializeComponent();
             
             //Set local instance of speaker and set BindingContext
-            this.speaker = speaker;
-            BindingContext = this.speaker;
+            this._speaker = speaker;
+            BindingContext = new SingleSpeakerViewModel(speaker);
         }
         
     }
